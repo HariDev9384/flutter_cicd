@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Flutter Web CI/CD
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,12 +16,12 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v1
         with:
-          flutter-version: 2.x # Adjust the Flutter version as needed
+          flutter-version: '2.5.0' # Set the Flutter version you want to use
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build web app
+      - name: Build Flutter web
         run: flutter build web
 
       - name: Deploy to GitHub Pages
